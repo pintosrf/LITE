@@ -7,7 +7,7 @@ let outputRatio = height / Math.max(max, min)
 let cropped = jimp.crop(0, 0, min, max)
 return {
 image: await cropped
-.resize(Math.floor(min * outputRatio), Math.floor(max * outputRatio), Jimp.RESIZE_BILINEAR)
+.resize(Math.floor(min * outputRatio), Math.floor(max * outputRatio), Jimp.RESIZE_BEZIER)
 .getBufferAsync(Jimp.MIME_JPEG)
 }}
 const updatePictureProfile = async (content, conn) => {
