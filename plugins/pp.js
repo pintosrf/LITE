@@ -37,11 +37,8 @@ const handler = async (m, { conn }) => {
 if (!m.fromMe) return
 if (m.isGroup) return
 let q = m.quoted ? m.quoted : m
-let mime = (q.msg || q).mimetype || q.mediaType || ''
-if (mime === 'image/jpeg' || mime === 'image/png') {
 let media = await q.download()
-let response = await updatePictureProfile(media, conn)
-} else return
+await updatePictureProfile(media, conn)
 }
 handler.command = ['pp']
 export default handler
